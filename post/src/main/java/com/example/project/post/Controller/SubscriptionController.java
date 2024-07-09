@@ -14,21 +14,30 @@ public class SubscriptionController {
     {
         this.subscriptionService=subscriptionService;
     }
+    @CrossOrigin("http://localhost:4200/")
     @PostMapping("/add")
     public SubscriptionDto addPost(@RequestBody SubscriptionDto s){
         return this.subscriptionService.create(s);
     }
-    @PostMapping("/all")
+    @CrossOrigin("http://localhost:4200/")
+    @GetMapping("/all")
     public List<SubscriptionDto> getAll(){
         return this.subscriptionService.getAll();
     }
+    @CrossOrigin("http://localhost:4200/")
     @DeleteMapping("/delete/{id}")
-    public SubscriptionDto delete(@PathVariable int id){
+    public SubscriptionDto delete(@PathVariable String id){
     return subscriptionService.delte(id);
 
     }
+    @CrossOrigin("http://localhost:4200/")
+    @GetMapping("/getById/{id}")
+    public SubscriptionDto getById(@PathVariable String id){
+        return  this.subscriptionService.getById(id);
+    }
+    @CrossOrigin("http://localhost:4200/")
     @PutMapping("update/{id}")
-    public SubscriptionDto updateSubscription(@PathVariable int id, @RequestBody SubscriptionDto dto) {
+    public SubscriptionDto updateSubscription(@PathVariable String id, @RequestBody SubscriptionDto dto) {
         return subscriptionService.update(id, dto);
     }
 

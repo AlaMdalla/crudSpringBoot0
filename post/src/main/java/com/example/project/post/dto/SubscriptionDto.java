@@ -5,12 +5,20 @@ import com.example.project.post.Entity.Subscription;
 import java.time.LocalDateTime;
 
 public class SubscriptionDto {
-    int id=0;
+    public String getId() {
+        return id;
+    }
+
+        public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String plan;
 
-    public SubscriptionDto(int id, LocalDateTime startTime, LocalDateTime endTime, String plan) {
+    public SubscriptionDto(String id, LocalDateTime startTime, LocalDateTime endTime, String plan) {
 
         if(endTime!=null&&endTime.isBefore(startTime))
             throw new IllegalArgumentException("End time must be after start time.");

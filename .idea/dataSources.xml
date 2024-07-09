@@ -8,5 +8,13 @@
       <jdbc-url>jdbc:mysql://localhost:3306/stage</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="@stage.evumzjp.mongodb.net" uuid="c648be13-a14f-4845-9688-e0d73ab2fa94">
+      <driver-ref>documentdb</driver-ref>
+      <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
+      <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>
+      <jdbc-url>mongodb+srv://alamdalla11:ctSuoZEunltdQ090@stage.evumzjp.mongodb.net/?retryWrites=true&amp;w=majority</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

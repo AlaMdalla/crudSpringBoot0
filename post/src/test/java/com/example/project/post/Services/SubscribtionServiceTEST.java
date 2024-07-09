@@ -1,10 +1,7 @@
 package com.example.project.post.Services;
 
-import com.example.project.post.Entity.Post;
 import com.example.project.post.Entity.Subscription;
-import com.example.project.post.Repository.PostRepository;
 import com.example.project.post.Repository.SubscriptionRepository;
-import com.example.project.post.dto.PostDto;
 import com.example.project.post.dto.SubscriptionDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

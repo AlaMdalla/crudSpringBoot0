@@ -29,7 +29,7 @@ public class SubscriptionControllerTest {
         LocalDateTime startTime = LocalDateTime.now();
         LocalDateTime endTime = startTime.plusHours(2);
         String plan = "Example plan";
-        SubscriptionDto sub = new SubscriptionDto(startTime,endTime,plan);
+        SubscriptionDto sub = new SubscriptionDto("1",startTime,endTime,plan);
 
         mockMvc.perform(post("http://localhost:8082/api/subscription/add")
                 .contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(sub)))

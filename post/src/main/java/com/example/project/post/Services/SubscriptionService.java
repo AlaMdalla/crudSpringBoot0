@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class SubscriptionService implements Crud<SubscriptionDto,Integer> {
+public class SubscriptionService implements Crud<SubscriptionDto,String> {
 
      private final  SubscriptionRepository subscriptionRepository;
      @Autowired
@@ -28,16 +28,18 @@ Subscription subscription = dto.toEntity();
 
     @Override
     public List<SubscriptionDto> getAll() {
-        return this.subscriptionRepository.findAll().stream().map(a->a.toDto()).toList();
+
+        List<SubscriptionDto> lis= this.subscriptionRepository.findAll().stream().map(a->a.toDto()).toList();
+        return lis;
     }
 
     @Override
-    public SubscriptionDto getById(Integer id) {
+    public SubscriptionDto getById(String id) {
         return subscriptionRepository.getById(id).toDto();
     }
 
     @Override
-    public SubscriptionDto update(Integer id, SubscriptionDto dto)  {
+    public SubscriptionDto update(String id, SubscriptionDto dto)  {
         Optional<Subscription> existingSubscription = subscriptionRepository.findById(id);
         if (existingSubscription.isPresent()) {
             Subscription subscription = existingSubscription.get();
@@ -49,7 +51,7 @@ Subscription subscription = dto.toEntity();
 return null;        }}
 
     @Override
-    public SubscriptionDto delte(Integer id) {
+    public SubscriptionDto delte(String id) {
 
         SubscriptionDto subscriptionDto= this.getById(id);
         Subscription subscription =subscriptionDto.toEntity();

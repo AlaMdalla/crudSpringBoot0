@@ -4,18 +4,19 @@ import com.example.project.post.dto.SubscriptionDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.time.LocalDateTime;
-@Entity
+@Document(collection = "Subscription") // Specify the collection name here
 public class Subscription {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id=0;
+    @MongoId
+    private String id; // Changed to String as MongoDB uses ObjectId by default
+
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String plan;
-
 
     public void setPlan(String plan) {
         this.plan=plan;
@@ -52,7 +53,7 @@ this.endTime=endTime;
                 '}';
     }
 
-    public Subscription(int id, LocalDateTime startTime, LocalDateTime endTime, String plan) {
+    public Subscription(String id, LocalDateTime startTime, LocalDateTime endTime, String plan) {
         this.id = id;
 
         this.startTime = startTime;

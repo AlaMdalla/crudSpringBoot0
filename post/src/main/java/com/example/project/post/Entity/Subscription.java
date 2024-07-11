@@ -17,9 +17,43 @@ public class Subscription {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String plan;
+    private  String backgroundColor;
+
+    public Subscription(String id, LocalDateTime startTime, LocalDateTime endTime, String plan, String backgroundColor) {
+        this.id = id;
+
+        this.startTime = startTime;
+        if(endTime.isBefore(startTime))
+            throw new IllegalArgumentException("End time must be after start time.");
+        this.endTime = endTime;
+        this.plan = plan;
+  this.backgroundColor=backgroundColor;
+    }
+
+    public String getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    public void setBackgroundColor(String backgroundColor) {
+        this.backgroundColor = backgroundColor;
+    }
+
+
 
     public void setPlan(String plan) {
         this.plan=plan;
+        switch (plan){
+            case "Light":
+                this.backgroundColor= "#ffffff";
+            case "Core":
+                this.backgroundColor= "#800080";
+            case "Business":
+                this.backgroundColor= "#ffd700";
+            case "Business Elite":
+                this.backgroundColor=  "#ff0000";
+            default:
+                this.backgroundColor= "#ffffff";
+        }
     }
 
     public LocalDateTime getStartTime() {
@@ -61,12 +95,36 @@ this.endTime=endTime;
             throw new IllegalArgumentException("End time must be after start time.");
         this.endTime = endTime;
         this.plan = plan;
+        switch (plan){
+            case "Light":
+                this.backgroundColor= "#ffffff";
+            case "Core":
+                this.backgroundColor= "#800080";
+            case "Business":
+                this.backgroundColor= "#ffd700";
+            case "Business Elite":
+                this.backgroundColor=  "#ff0000";
+            default:
+                this.backgroundColor= "#ffffff";
+        }
     }
 
     public Subscription(LocalDateTime startTime, LocalDateTime endTime, String plan) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.plan = plan;
+        switch (plan){
+            case "Light":
+                this.backgroundColor= "#ffffff";
+            case "Core":
+                this.backgroundColor= "#800080";
+            case "Business":
+                this.backgroundColor= "#ffd700";
+            case "Business Elite":
+                this.backgroundColor=  "#ff0000";
+            default:
+                this.backgroundColor= "#ffffff";
+        }
     }
 
     public Subscription(){
@@ -77,7 +135,32 @@ this.endTime=endTime;
      *
      * @return the object of entity Subscription
      */
-    public SubscriptionDto toDto(){
-        return new SubscriptionDto(this.id,this.startTime,this.endTime,this.plan);
+    public SubscriptionDto toDto() {
+        System.out.println(this.plan);
+        String backgroundColor;
+        switch (this.plan) {
+            case "Light":
+                backgroundColor = "linear-gradient(to bottom right, #f2f2f2 0%, #e0e0e0 80%, #d0d0d0 100%)"; // Light gray with subtle bottom right corner (Changed from light gray to slightly darker)
+                break;
+            case "Core":
+                backgroundColor = "linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%)"; // Dark charcoal to even darker charcoal
+                break;
+            case "Business":
+                backgroundColor = "linear-gradient(to bottom right, #d6ceff 0%, #93a1a4 100%)"; // Amethyst gradient - Mystical Amethyst (Changed from light beige to soft green to amethyst)
+                break;
+            case "Business Elite":
+                backgroundColor = "linear-gradient(135deg, #c3cfe2 0%, #c3cfe2 100%)"; // Light rose gold to darker rose gold
+                break;
+            default:
+                backgroundColor = "linear-gradient(to bottom right, #f5f5f5 0%, #e0e0e0 80%, #d0d0d0 100%)"; // Default light gray with subtle bottom right corner
+                break;
+        }
+
+        System.out.println(backgroundColor);
+
+        return new SubscriptionDto(this.id, this.startTime, this.endTime, this.plan, backgroundColor);
     }
+
+
+
 }

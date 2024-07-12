@@ -46,6 +46,12 @@ Subscription subscription = dto.toEntity();
             subscription.setStartTime(dto.getStartTime());
             subscription.setEndTime(dto.getEndTime());
             subscription.setPlan(dto.getPlan());
+            subscription.setPrice(dto.getPrice());
+            subscription.setFeature1(dto.isFeature1());
+            subscription.setFeature2(dto.isFeature2());
+            subscription.setFeature3(dto.isFeature3());
+            subscription.setFeature4(dto.isFeature4());
+
             return subscriptionRepository.save(subscription).toDto();
         } else {
 return null;        }}

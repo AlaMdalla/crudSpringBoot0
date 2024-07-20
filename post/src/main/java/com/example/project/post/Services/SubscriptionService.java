@@ -65,4 +65,9 @@ return null;        }}
          this.subscriptionRepository.delete(subscription);
          return subscription.toDto();
     }
+
+    public  List<SubscriptionDto> getByPlan(String plan) {
+
+        return this.subscriptionRepository.findAll().stream().filter(t->t.getPlan().equals(plan)).map(t->t.toDto()).toList();
+    }
 }

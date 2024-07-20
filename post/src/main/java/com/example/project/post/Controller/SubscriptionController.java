@@ -40,7 +40,13 @@ public class SubscriptionController {
     public SubscriptionDto updateSubscription(@PathVariable String id, @RequestBody SubscriptionDto dto) {
         return subscriptionService.update(id, dto);
     }
-
+    @CrossOrigin("http://localhost:4200/")
+    @GetMapping(value = {"/getByPlan/{plan}","/getByPlan/"})
+    public List<SubscriptionDto> getByPlan(@PathVariable (required = false) String plan){
+        if(plan==null ||plan.isEmpty())
+            return this.getAll();
+        return  this.subscriptionService.getByPlan(plan);
+    }
 
 
 

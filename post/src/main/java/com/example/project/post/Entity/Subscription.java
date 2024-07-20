@@ -58,16 +58,7 @@ public class Subscription {
     private boolean feature3;
     private boolean feature4;
 
-    public Subscription(String id, LocalDateTime startTime, LocalDateTime endTime, String plan, String backgroundColor) {
-        this.id = id;
 
-        this.startTime = startTime;
-        if(endTime.isBefore(startTime))
-            throw new IllegalArgumentException("End time must be after start time.");
-        this.endTime = endTime;
-        this.plan = plan;
-  this.backgroundColor=backgroundColor;
-    }
 
     public Subscription(String id, LocalDateTime startTime, LocalDateTime endTime, String plan, String backgroundColor, double price, boolean feature1, boolean feature2, boolean feature3, boolean feature4) {
         this.id = id;
@@ -85,17 +76,7 @@ public class Subscription {
         this.feature4 = feature4;
     }
 
-    public Subscription(String id, LocalDateTime startTime, LocalDateTime endTime, String plan, String backgroundColor, double price) {
-        this.id = id;
 
-        this.startTime = startTime;
-        if(endTime.isBefore(startTime))
-            throw new IllegalArgumentException("End time must be after start time.");
-        this.endTime = endTime;
-        this.plan = plan;
-        this.backgroundColor=backgroundColor;
-        this.price =price;
-    }
 
     public String getBackgroundColor() {
         return backgroundColor;
@@ -116,18 +97,7 @@ public class Subscription {
 
     public void setPlan(String plan) {
         this.plan=plan;
-        switch (plan){
-            case "Light":
-                this.backgroundColor= "#ffffff";
-            case "Core":
-                this.backgroundColor= "#800080";
-            case "Business":
-                this.backgroundColor= "#ffd700";
-            case "Business Elite":
-                this.backgroundColor=  "#ff0000";
-            default:
-                this.backgroundColor= "#ffffff";
-        }
+
     }
 
     public LocalDateTime getStartTime() {
@@ -169,36 +139,14 @@ this.endTime=endTime;
             throw new IllegalArgumentException("End time must be after start time.");
         this.endTime = endTime;
         this.plan = plan;
-        switch (plan){
-            case "Light":
-                this.backgroundColor= "#ffffff";
-            case "Core":
-                this.backgroundColor= "#800080";
-            case "Business":
-                this.backgroundColor= "#ffd700";
-            case "Business Elite":
-                this.backgroundColor=  "#ff0000";
-            default:
-                this.backgroundColor= "#ffffff";
-        }
+
     }
 
     public Subscription(LocalDateTime startTime, LocalDateTime endTime, String plan) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.plan = plan;
-        switch (plan){
-            case "Light":
-                this.backgroundColor= "#ffffff";
-            case "Core":
-                this.backgroundColor= "#800080";
-            case "Business":
-                this.backgroundColor= "#ffd700";
-            case "Business Elite":
-                this.backgroundColor=  "#ff0000";
-            default:
-                this.backgroundColor= "#ffffff";
-        }
+
     }
 
     public Subscription(){

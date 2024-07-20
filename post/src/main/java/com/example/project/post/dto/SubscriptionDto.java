@@ -15,16 +15,6 @@ public class SubscriptionDto {
         this.backgroundColor=backgroundColor;
     }
 
-    public SubscriptionDto(String id, LocalDateTime startTime, LocalDateTime endTime, String plan, String backgroundColor, double price) {
-        if(endTime!=null&&endTime.isBefore(startTime))
-            throw new IllegalArgumentException("End time must be after start time.");
-        this.id = id;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.plan = plan;
-        this.backgroundColor=backgroundColor;
-        this.price =price;
-    }
 
     public SubscriptionDto(String id, LocalDateTime startTime, LocalDateTime endTime, String plan, String backgroundColor, double price, boolean feature1, boolean feature2, boolean feature3, boolean feature4) {
         if(endTime!=null&&endTime.isBefore(startTime))

@@ -51,6 +51,7 @@ Subscription subscription = dto.toEntity();
             subscription.setFeature2(dto.isFeature2());
             subscription.setFeature3(dto.isFeature3());
             subscription.setFeature4(dto.isFeature4());
+            subscription.setNumberOfMonthes(dto.getNumberOfMonthes());
 
             return subscriptionRepository.save(subscription).toDto();
         } else {

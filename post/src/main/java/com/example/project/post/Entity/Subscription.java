@@ -21,6 +21,15 @@ public class Subscription {
     private double price;
     //lena nzidou options
     private boolean feature1;
+    private int numberOfMonthes;
+
+    public int getNumberOfMonthes() {
+        return numberOfMonthes;
+    }
+
+    public void setNumberOfMonthes(int numberOfMonthes) {
+        this.numberOfMonthes = numberOfMonthes;
+    }
 
     public boolean isFeature1() {
         return feature1;
@@ -60,7 +69,7 @@ public class Subscription {
 
 
 
-    public Subscription(String id, LocalDateTime startTime, LocalDateTime endTime, String plan, String backgroundColor, double price, boolean feature1, boolean feature2, boolean feature3, boolean feature4) {
+    public Subscription(String id, LocalDateTime startTime, LocalDateTime endTime, String plan, String backgroundColor, double price, boolean feature1, boolean feature2, boolean feature3, boolean feature4 ,int numberOfMonthes) {
         this.id = id;
 
         this.startTime = startTime;
@@ -74,6 +83,7 @@ public class Subscription {
         this.feature2 = feature2;
         this.feature3 = feature3;
         this.feature4 = feature4;
+        this.numberOfMonthes=numberOfMonthes;
     }
 
 
@@ -161,10 +171,10 @@ this.endTime=endTime;
         System.out.println(this.plan);
         String backgroundColor;
         switch (this.plan) {
-            case "Light":
+            case "annuel":
                 backgroundColor = "linear-gradient(to bottom right, #f2f2f2 0%, #e0e0e0 80%, #d0d0d0 100%)"; // Light gray with subtle bottom right corner (Changed from light gray to slightly darker)
                 break;
-            case "Core":
+            case "mensuel":
                 backgroundColor = "linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%)        "; // Dark charcoal to even darker charcoal
                 break;
             case "Business":
@@ -179,8 +189,8 @@ this.endTime=endTime;
         }
 
         System.out.println(backgroundColor);
-
-        return new SubscriptionDto(this.id, this.startTime, this.endTime, this.plan, backgroundColor ,this.price, this.feature1, this.feature2, this.feature3, this.feature4);
+        System.out.println(this.getNumberOfMonthes());
+        return new SubscriptionDto(this.id, this.startTime, this.endTime, this.plan, backgroundColor ,this.price, this.feature1, this.feature2, this.feature3, this.feature4,this.numberOfMonthes);
     }
 
 

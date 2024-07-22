@@ -16,7 +16,15 @@ public class SubscriptionDto {
     }
 
 
-    public SubscriptionDto(String id, LocalDateTime startTime, LocalDateTime endTime, String plan, String backgroundColor, double price, boolean feature1, boolean feature2, boolean feature3, boolean feature4) {
+    public int getNumberOfMonthes() {
+        return numberOfMonthes;
+    }
+
+    public void setNumberOfMonthes(int numberOfMonthes) {
+        this.numberOfMonthes = numberOfMonthes;
+    }
+
+    public SubscriptionDto(String id, LocalDateTime startTime, LocalDateTime endTime, String plan, String backgroundColor, double price, boolean feature1, boolean feature2, boolean feature3, boolean feature4, int numberOfMonthes) {
         if(endTime!=null&&endTime.isBefore(startTime))
             throw new IllegalArgumentException("End time must be after start time.");
         this.id = id;
@@ -24,10 +32,10 @@ public class SubscriptionDto {
         this.endTime = endTime;
         this.plan = plan;
         switch (plan) {
-            case "Light":
+            case "annuel":
                 backgroundColor = "linear-gradient(to bottom right, #f2f2f2 0%, #e0e0e0 80%, #d0d0d0 100%)"; // Light gray with subtle bottom right corner (Changed from light gray to slightly darker)
                 break;
-            case "Core":
+            case "mensuel":
                 backgroundColor = "linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%)        "; // Dark charcoal to even darker charcoal
                 break;
             case "Business":
@@ -46,6 +54,7 @@ public class SubscriptionDto {
         this.feature2 = feature2;
         this.feature3 = feature3;
         this.feature4 = feature4;
+        this.numberOfMonthes =numberOfMonthes;
     }
 
     public String getId() {
@@ -74,6 +83,7 @@ public class SubscriptionDto {
     private boolean feature2;
     private boolean feature3;
     private boolean feature4;
+    private int numberOfMonthes;
 
     public String getBackgroundColor() {
         return backgroundColor;
@@ -93,10 +103,10 @@ public class SubscriptionDto {
         this.plan = plan;
         String backgroundColor;
         switch (this.plan) {
-            case "Light":
+            case "annuel":
                 backgroundColor = "linear-gradient(to bottom right, #f2f2f2 0%, #e0e0e0 80%, #d0d0d0 100%)"; // Light gray with subtle bottom right corner (Changed from light gray to slightly darker)
                 break;
-            case "Core":
+            case "mensuel":
                 backgroundColor = "linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%)        "; // Dark charcoal to even darker charcoal
                 break;
             case "Business":
@@ -110,6 +120,7 @@ public class SubscriptionDto {
                 break;
         }
         this.backgroundColor=backgroundColor;
+
     }
 
     public SubscriptionDto() {
@@ -152,10 +163,10 @@ public class SubscriptionDto {
     public Subscription toEntity(){
         String backgroundColor;
         switch (plan) {
-            case "Light":
+            case "annuel":
                 backgroundColor = "linear-gradient(to bottom right, #f2f2f2 0%, #e0e0e0 80%, #d0d0d0 100%)"; // Light gray with subtle bottom right corner (Changed from light gray to slightly darker)
                 break;
-            case "Core":
+            case "mensuel":
                 backgroundColor = "linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%)        "; // Dark charcoal to even darker charcoal
                 break;
             case "Business":
@@ -168,7 +179,8 @@ public class SubscriptionDto {
                 backgroundColor = "linear-gradient(to bottom right, #f5f5f5 0%, #e0e0e0 80%, #d0d0d0 100%)"; // Default light gray with subtle bottom right corner
                 break;
         }
-        return new Subscription(this.id,this.startTime,this.endTime,this.plan,backgroundColor,this.price,this.feature1, this.feature2, this.feature3, this.feature4);
+        System.out.println(this.getNumberOfMonthes());
+        return new Subscription(this.id,this.startTime,this.endTime,this.plan,backgroundColor,this.price,this.feature1, this.feature2, this.feature3, this.feature4,this.numberOfMonthes);
 
     }
 
@@ -213,4 +225,5 @@ public class SubscriptionDto {
     public void setFeature4(boolean feature4) {
         this.feature4 = feature4;
     }
+
 }

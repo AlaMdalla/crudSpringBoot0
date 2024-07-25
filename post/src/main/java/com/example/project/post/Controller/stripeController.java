@@ -24,4 +24,5 @@ import org.springframework.web.bind.annotation.*;
         Double amount = Double.parseDouble(request.getHeader("amount"));
         return stripeClient.chargeCreditCard(token, amount);
     }
+
 }
